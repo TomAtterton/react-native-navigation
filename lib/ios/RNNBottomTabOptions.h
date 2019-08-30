@@ -4,7 +4,6 @@
 
 @interface RNNBottomTabOptions : RNNOptions
 
-@property (nonatomic, strong) Bool* hideBottomBarWhenPushed;
 @property(nonatomic) NSUInteger tag;
 @property(nonatomic, strong) Text *text;
 @property(nonatomic, strong) Text *badge;

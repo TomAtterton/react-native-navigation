@@ -5,6 +5,7 @@
 - (instancetype)initWithDict:(NSDictionary *)dict {
 	self = [super init];
 	
+	self.hideBottomBarWhenPushed = [BoolParser parse:dict key:@"hideBottomBarWhenPushed"];
 	self.visible = [BoolParser parse:dict key:@"visible"];
 	self.currentTabIndex = [IntNumberParser parse:dict key:@"currentTabIndex"];
 	self.drawBehind = [BoolParser parse:dict key:@"drawBehind"];

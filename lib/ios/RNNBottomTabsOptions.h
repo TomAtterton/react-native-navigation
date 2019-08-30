@@ -2,6 +2,7 @@
 
 @interface RNNBottomTabsOptions : RNNOptions
 
+@property (nonatomic, strong) Bool* hideBottomBarWhenPushed;
 @property (nonatomic, strong) Bool* visible;
 @property (nonatomic, strong) IntNumber* currentTabIndex;
 @property (nonatomic, strong) Bool* drawBehind;
