@@ -8,6 +8,7 @@
     self = [super init];
     self.tag = arc4random();
 
+	self.hideBottomBarWhenPushed = [BoolParser parse:dict key:@"hideBottomBarWhenPushed"];
     self.text = [TextParser parse:dict key:@"text"];
     self.badge = [TextParser parse:dict key:@"badge"];
     self.badgeColor = [ColorParser parse:dict key:@"badgeColor"];

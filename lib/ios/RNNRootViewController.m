@@ -46,11 +46,29 @@
 	[_presenter applyOptions:self.resolveOptions];
 	[_presenter renderComponents:self.resolveOptions perform:nil];
 	
+	if(![_options.bottomTabs.hideBottomBarWhenPushed getWithDefaultValue:NO]){
+		self.tabBarController.tabBar.layer.zPosition = 0;
+		self.tabBarController.tabBar.hidden = NO;
+	}
+	
+	if([_options.bottomTabs.hideBottomBarWhenPushed getWithDefaultValue:NO]){
+		if(self.tabBarController.tabBar.hidden){
+			self.tabBarController.tabBar.layer.zPosition = -1;
+			self.tabBarController.tabBar.hidden = YES;
+		}
+	}
+	
 	[self.parentViewController onChildWillAppear];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
+	
+	if([_options.bottomTabs.hideBottomBarWhenPushed getWithDefaultValue:NO]){
+		self.tabBarController.tabBar.layer.zPosition = -1;
+		self.tabBarController.tabBar.hidden = YES;
+	}
+	
 	[self.eventEmitter sendComponentDidAppear:self.layoutInfo.componentId componentName:self.layoutInfo.name];
 }
 
@@ -94,7 +112,7 @@
 }
 
 - (CGFloat)getTopBarHeight {
-    return [[self getCurrentChild] getTopBarHeight];
+	return [[self getCurrentChild] getTopBarHeight];
 }
 
 -(void)updateSearchResultsForSearchController:(UISearchController *)searchController {
@@ -203,5 +221,11 @@
 	[self.eventEmitter sendOnNavigationButtonPressed:self.layoutInfo.componentId buttonId:barButtonItem.buttonId];
 }
 
+
+-(BOOL)hidesBottomBarWhenPushed
+{
+	
+	return [_options.bottomTabs.hideBottomBarWhenPushed getWithDefaultValue:NO];
+}
 
 @end

@@ -452,6 +452,10 @@ export interface OptionsFab {
 
 export interface OptionsBottomTabs {
   /**
+   * iOS native prop used to hide the bottom tab bar when pushed
+   */
+  hideBottomBarWhenPushed?: boolean;
+  /**
    * Show or hide the bottom tabs
    */
   visible?: boolean;
